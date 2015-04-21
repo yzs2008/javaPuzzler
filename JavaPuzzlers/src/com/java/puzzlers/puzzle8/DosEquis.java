@@ -6,5 +6,9 @@ public class DosEquis {
 		int i=0;
 		System.out.print(true ? x:0);
 		System.out.print(false ? i:x);
+		
+		/*console result:
+		 *X88 
+		 */
 	}
 }
