@@ -3,9 +3,6 @@ package com.java.puzzlers.expressive;
 import java.text.DateFormat;
 import java.util.Date;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 public class GsonDateParser {
 
   public static void main(String[] args) {
@@ -14,9 +11,9 @@ public class GsonDateParser {
     Date shouldBe=new Date(dateLongVal);
     System.out.println(shouldBe);
 
-    Gson gson=new GsonBuilder().setDateFormat(DateFormat.MILLISECOND_FIELD).create();
-    String toJson=gson.toJson(shouldBe);
-    System.out.println(toJson);
+//    Gson gson=new GsonBuilder().setDateFormat(DateFormat.MILLISECOND_FIELD).create();
+//    String toJson=gson.toJson(shouldBe);
+//    System.out.println(toJson);
     //Date date= gson.fromJson(json, Date.class);
     //System.out.println(date);
   }
