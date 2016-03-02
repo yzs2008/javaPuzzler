@@ -1,6 +1,7 @@
 package kaidi.ominprime.unit;
 
 import kaidi.base.MockTest;
+import main.ominprime.unit.ApplicationModel;
 import main.ominprime.unit.RepaymentStatus;
 import org.junit.Assert;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -68,6 +70,37 @@ public class Lambda extends MockTest {
                                            .collect(Collectors.toList());
         Assert.assertEquals(gt100List, result.get(true));
         Assert.assertEquals(lt100List, result.get(false));
+    }
+
+    @Test
+    public void testMap() {
+        List<ApplicationModel> appList = new ArrayList<>();
+        appList.add(new ApplicationModel("normal", 100, 100));
+        appList.add(new ApplicationModel("delay", 200, 100));
+        appList.add(new ApplicationModel("over", 500, 100));
+        appList.add(new ApplicationModel("prePay", 600, 100));
+        appList.add(new ApplicationModel("normal", 100, 100));
+        appList.add(new ApplicationModel("wait for check", 0, 30));
+        appList.add(new ApplicationModel("deny", 0, 40));
+        appList.add(new ApplicationModel("canceled by system", 0, 1000));
+
+        long count = appList.stream()
+                            .filter((app) -> app.getRepaymentStatus() >= 100)
+                            .count();
+        Assert.assertEquals(count, 5);
+
+        List<ApplicationModel> result = appList.stream()
+                                               .filter(app -> app.getStatus() >= 100 && app.getStatus() != 1000)
+                                               .map((app) -> {
+                                                   if (app.getRepaymentStatus() >= 100) {
+                                                       app.setStatus(app.getRepaymentStatus());
+                                                   }
+                                                   return app;
+                                               })
+                                               .collect(Collectors.toList());
+
+        result.stream().forEach(app -> System.out.println(app.toString()));
+        Assert.assertEquals(result.get(1).getStatus(), 200);
     }
 }
 
