@@ -1,10 +1,15 @@
-package puzzlers.generic;
+package main.puzzlers.generic;
 
 import javax.sound.midi.Soundbank;
 
 /**
- * Created by DELL on 2016/2/19.
+ * Created by IntelliJ IDEA.
+ * User: kaidi
+ * Date: 2016/2/19
+ * Time: 21:11
+ * Write the code, Change the world.
  */
+
 public class RawType {
 
   public static void main(String[] args) {
