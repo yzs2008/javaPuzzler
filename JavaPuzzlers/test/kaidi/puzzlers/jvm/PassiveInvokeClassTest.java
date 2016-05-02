@@ -4,6 +4,8 @@ import main.puzzlers.jvm.PassiveInvokeChild;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashMap;
+
 /**
  * Created by IntelliJ IDEA.
  * User: kaidi
@@ -28,5 +30,23 @@ public class PassiveInvokeClassTest {
     int hours = PassiveInvokeChild.hoursOfSleep;
     System.out.println("hours of sleep is: " + hours);
     Assert.assertTrue(true);
+  }
+
+  /**
+   ** test for expression resolve.
+   **/
+  @Test
+  public void testExpressionResolve() {
+    String express = "(A*2+B+C+D+E+F-(A+B+C+D)/4)/6";
+    Map<String,Double> judgeMapForTest = new HashMap();
+    judgeMapForTest.put("A",87.8);
+    judgeMapForTest.put("B",76.6);
+    judgeMapForTest.put("C",84.7);
+    judgeMapForTest.put("D",65.2);
+    judgeMapForTest.put("E",90.7);
+    judgeMapForTest.put("F",86.8);
+    String intermidate = ExpressionResolve.preProcess(express);
+    Double result = ExpressionResolve.resolve(intermidate);
+    Assert.assertEquals(result, new Double(83.50417));
   }
 }

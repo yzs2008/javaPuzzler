@@ -1,4 +1,4 @@
-package puzzlers.expressive;
+package main.puzzlers.expressive;
 
 /**
  * @author kaidi
