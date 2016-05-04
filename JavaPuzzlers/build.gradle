@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+repositories {
+
+    maven {
+        url "http://maven.oschina.net/content/groups/public/"
+    }
+
+    mavenCentral()
+    mavenLocal()
+
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    baseName = 'javaPuzzler'
+}
+
+dependencies {
+    compile(
+        'org.slf4j:slf4j-api:1.7.12',
+        'org.slf4j:slf4j-log4j12:1.7.12',
+        'commons-logging:commons-logging:1.2',
+        'log4j:log4j:1.2.17',
+        'com.google.code.gson:gson:2.4'
+    )
+
+    compile files(
+        'bin/javaPuzzler.jar'
+    )
+
+    testCompile 'junit:junit:4.12'
+}
+  
