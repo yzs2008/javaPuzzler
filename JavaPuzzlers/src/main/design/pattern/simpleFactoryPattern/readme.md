@@ -8,7 +8,7 @@
 > 1. factory对象，负责创建对象
 > 2. shape接口，类型基础
 > 3. concreteShape类，factory类需要创建的具体对象
->> `ps. director 是模式调用demo`
+>> `ps. directorTest 是模式调用demo`
 
 
  **简单工厂模式结构图**

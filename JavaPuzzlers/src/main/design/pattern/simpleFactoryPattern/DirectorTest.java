@@ -7,7 +7,7 @@ package main.design.pattern.simpleFactoryPattern;
  * Time: 16:22
  * Write the code, Change the world.
  */
-public class Director {
+public class DirectorTest {
   public static void main(String[] args) {
     ShapeFactory factory = new ShapeFactory();
     Shape rectangle, square, circle;

@@ -1,6 +1,5 @@
 package kaidi.ominprime.unit;
 
-import kaidi.base.MockTest;
 import main.ominprime.unit.ApplicationModel;
 import main.ominprime.unit.RepaymentStatusModel;
 import org.junit.Assert;
@@ -22,7 +21,7 @@ import java.util.stream.Stream;
  * Time: 21:11
  * Write the code, Change the world.
  */
-public class Lambda extends MockTest {
+public class LambdaTest {
 
   /**
    * lambda 表达式，boxed（）可以快速创建一个list对象。

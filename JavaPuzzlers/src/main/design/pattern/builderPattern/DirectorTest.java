@@ -7,7 +7,7 @@ package main.design.pattern.builderPattern;
  * Time: 9:14
  * Write the code, Change the world.
  */
-public class Director {
+public class DirectorTest {
   public static void main(String[] args) {
     System.out.println("I am the test demo of builderPattern!");
 

@@ -7,7 +7,7 @@ package main.puzzlers.generic;
  * Time: 21:11
  * Write the code, Change the world.
  */
-public class Box<T> {
+public class BoxModel<T> {
   T val;
 
   public void setVal(T t) {
