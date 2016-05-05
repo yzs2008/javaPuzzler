@@ -10,60 +10,60 @@ import java.util.Date;
  * Write the code, Change the world.
  */
 public class Person {
-    String name;
-    int gender;
-    int age;
-    String emailAddress;
+  String name;
+  int gender;
+  int age;
+  String emailAddress;
 
-    public int compareAge(Person p) {
-        if (this.getAge() > p.getAge()) {
-            return 1;
-        } else if (this.getAge() == p.getAge()) {
-            return 0;
-        }
-        return -1;
+  public int compareAge(Person p) {
+    if (this.getAge() > p.getAge()) {
+      return 1;
+    } else if (this.getAge() == p.getAge()) {
+      return 0;
     }
+    return -1;
+  }
 
-    public Person(String name, int gender, int age, String emailAddress) {
-        this.name = name;
-        this.gender = gender;
-        this.age = age;
-        this.emailAddress = emailAddress;
-    }
+  public Person(String name, int gender, int age, String emailAddress) {
+    this.name = name;
+    this.gender = gender;
+    this.age = age;
+    this.emailAddress = emailAddress;
+  }
 
-    public Person() {
-    }
+  public Person() {
+  }
 
-    public String getName() {
+  public String getName() {
 
-        return name;
-    }
+    return name;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public int getGender() {
-        return gender;
-    }
+  public int getGender() {
+    return gender;
+  }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+  public void setGender(int gender) {
+    this.gender = gender;
+  }
 
-    public int getAge() {
-        return age;
-    }
+  public int getAge() {
+    return age;
+  }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+  public void setAge(int age) {
+    this.age = age;
+  }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
+  public String getEmailAddress() {
+    return emailAddress;
+  }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
+  public void setEmailAddress(String emailAddress) {
+    this.emailAddress = emailAddress;
+  }
 }
