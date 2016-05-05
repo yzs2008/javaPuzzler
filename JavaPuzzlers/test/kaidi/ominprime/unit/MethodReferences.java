@@ -1,12 +1,11 @@
 package kaidi.ominprime.unit;
 
-import main.ominprime.unit.Person;
+import main.ominprime.unit.PersonModel;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,16 +19,16 @@ public class MethodReferences {
 
     @Test
     public void testMethodReference() {
-        Person[] personAsArray = new Person[5];
-        personAsArray[0] = new Person("person1", 1, 22, "living address of shanghai");
-        personAsArray[1] = new Person("person1", 2, 32, "living address of beijing");
-        personAsArray[2] = new Person("person1", 3, 43, "living address of zhengzhou");
-        personAsArray[3] = new Person("person1", 4, 42, "living address of guangzhou");
-        personAsArray[4] = new Person("person1", 5, 61, "living address of hangzhou");
+        PersonModel[] personAsArray = new PersonModel[5];
+        personAsArray[0] = new PersonModel("person1", 1, 22, "living address of shanghai");
+        personAsArray[1] = new PersonModel("person1", 2, 32, "living address of beijing");
+        personAsArray[2] = new PersonModel("person1", 3, 43, "living address of zhengzhou");
+        personAsArray[3] = new PersonModel("person1", 4, 42, "living address of guangzhou");
+        personAsArray[4] = new PersonModel("person1", 5, 61, "living address of hangzhou");
 
-        Arrays.sort(personAsArray, new Comparator<Person>() {
+        Arrays.sort(personAsArray, new Comparator<PersonModel>() {
             @Override
-            public int compare(Person o1, Person o2) {
+            public int compare(PersonModel o1, PersonModel o2) {
                 if (o1.getAge() > o2.getAge()) {
                     return 1;
                 }
@@ -56,7 +55,7 @@ public class MethodReferences {
         Assert.assertEquals(personAsArray[0].getAge(), 61);
 
 
-        Arrays.sort(personAsArray, Person::compareAge);
+        Arrays.sort(personAsArray, PersonModel::compareAge);
         Assert.assertEquals(personAsArray[0].getAge(), 22);
     }
 }

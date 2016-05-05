@@ -1,7 +1,5 @@
 package main.ominprime.unit;
 
-import java.util.Date;
-
 /**
  * Created by IntelliJ IDEA.
  * User: kaidi
@@ -9,13 +7,13 @@ import java.util.Date;
  * Time: 16:40
  * Write the code, Change the world.
  */
-public class Person {
+public class PersonModel {
   String name;
   int gender;
   int age;
   String emailAddress;
 
-  public int compareAge(Person p) {
+  public int compareAge(PersonModel p) {
     if (this.getAge() > p.getAge()) {
       return 1;
     } else if (this.getAge() == p.getAge()) {
@@ -24,14 +22,14 @@ public class Person {
     return -1;
   }
 
-  public Person(String name, int gender, int age, String emailAddress) {
+  public PersonModel(String name, int gender, int age, String emailAddress) {
     this.name = name;
     this.gender = gender;
     this.age = age;
     this.emailAddress = emailAddress;
   }
 
-  public Person() {
+  public PersonModel() {
   }
 
   public String getName() {

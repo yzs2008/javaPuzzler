@@ -2,14 +2,15 @@ package kaidi.ominprime.unit;
 
 import kaidi.base.MockTest;
 import main.ominprime.unit.ApplicationModel;
-import main.ominprime.unit.RepaymentStatus;
+import main.ominprime.unit.RepaymentStatusModel;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -23,84 +24,118 @@ import java.util.stream.Stream;
  */
 public class Lambda extends MockTest {
 
-    @Test
-    public void testIntStream() {
-        List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
-                                             .boxed()
-                                             .collect(Collectors.toList());
-        List<Integer> originList = new ArrayList<>();
-        originList.add(10);
-        originList.add(30);
-        originList.add(40);
-        originList.add(100);
-        originList.add(200);
-        originList.add(500);
-        originList.add(600);
+  /**
+   * lambda 表达式，boxed（）可以快速创建一个list对象。
+   */
+  @Test
+  public void testIntStream() {
+    List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
+                                         .boxed()
+                                         .collect(Collectors.toList());
+    List<Integer> originList = new ArrayList<>();
+    originList.add(10);
+    originList.add(30);
+    originList.add(40);
+    originList.add(100);
+    originList.add(200);
+    originList.add(500);
+    originList.add(600);
 
-        Assert.assertEquals(originList, integerList);
-    }
+    Assert.assertEquals(originList, integerList);
+  }
 
-    @Test
-    public void testStreamPartitionBy() {
-        List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
-                                             .boxed()
-                                             .collect(Collectors.toList());
-        Map<Boolean, List<Integer>> result = integerList.stream().collect(Collectors.partitioningBy(x -> x >= 100));
-        List<Integer> lt100List = IntStream.of(10, 30, 40)
-                                           .boxed()
+  /**
+   * lambda 表达式中 partitioningBy()可以实现对列表的分割.
+   */
+  @Test
+  public void testStreamPartitionBy() {
+    List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
+                                         .boxed()
+                                         .collect(Collectors.toList());
+    Map<Boolean, List<Integer>> result = integerList.stream().collect(Collectors.partitioningBy(x -> x >= 100));
+    List<Integer> lt100List = IntStream.of(10, 30, 40)
+                                       .boxed()
+                                       .collect(Collectors.toList());
+    List<Integer> gt100List = IntStream.of(100, 200, 500, 600)
+                                       .boxed()
+                                       .collect(Collectors.toList());
+    Assert.assertEquals(gt100List, result.get(true));
+    Assert.assertEquals(lt100List, result.get(false));
+  }
+
+  /**
+   * lambda 表达式 “::”可以调用静态函数引用。
+   */
+  public void testFunctionReference() {
+    List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
+                                         .boxed()
+                                         .collect(Collectors.toList());
+    Map<Boolean, List<Integer>> result = integerList.stream()
+                                                    .collect(Collectors.partitioningBy(RepaymentStatusModel::isRepaymentStatus));
+    List<Integer> lt100List = IntStream.of(10, 30, 40)
+                                       .boxed()
+                                       .collect(Collectors.toList());
+    List<Integer> gt100List = IntStream.of(100, 200, 500, 600)
+                                       .boxed()
+                                       .collect(Collectors.toList());
+    Assert.assertEquals(gt100List, result.get(true));
+    Assert.assertEquals(lt100List, result.get(false));
+  }
+
+  /**
+   * lambda 表达式 map（）可以遍历list，生成其他对象返回。
+   */
+  @Test
+  public void testMap() {
+    List<ApplicationModel> appList = new ArrayList<>();
+    appList.add(new ApplicationModel("normal", 100, 100));
+    appList.add(new ApplicationModel("delay", 200, 100));
+    appList.add(new ApplicationModel("over", 500, 100));
+    appList.add(new ApplicationModel("prePay", 600, 100));
+    appList.add(new ApplicationModel("normal", 100, 100));
+    appList.add(new ApplicationModel("wait for check", 0, 30));
+    appList.add(new ApplicationModel("deny", 0, 40));
+    appList.add(new ApplicationModel("canceled by system", 0, 1000));
+
+    long count = appList.stream()
+                        .filter((app) -> app.getRepaymentStatus() >= 100)
+                        .count();
+    Assert.assertEquals(count, 5);
+
+    List<ApplicationModel> result = appList.stream()
+                                           .filter(app -> app.getStatus() >= 100 && app.getStatus() != 1000)
+                                           .map((app) -> {
+                                             if (app.getRepaymentStatus() >= 100) {
+                                               app.setStatus(app.getRepaymentStatus());
+                                             }
+                                             return app;
+                                           })
                                            .collect(Collectors.toList());
-        List<Integer> gt100List = IntStream.of(100, 200, 500, 600)
-                                           .boxed()
-                                           .collect(Collectors.toList());
-        Assert.assertEquals(gt100List, result.get(true));
-        Assert.assertEquals(lt100List, result.get(false));
-    }
 
-    public void testFunctionReference() {
-        List<Integer> integerList = IntStream.of(10, 30, 40, 100, 200, 500, 600)
-                                             .boxed()
-                                             .collect(Collectors.toList());
-        Map<Boolean, List<Integer>> result = integerList.stream()
-                                                        .collect(Collectors.partitioningBy(RepaymentStatus::isRepaymentStatus));
-        List<Integer> lt100List = IntStream.of(10, 30, 40)
-                                           .boxed()
-                                           .collect(Collectors.toList());
-        List<Integer> gt100List = IntStream.of(100, 200, 500, 600)
-                                           .boxed()
-                                           .collect(Collectors.toList());
-        Assert.assertEquals(gt100List, result.get(true));
-        Assert.assertEquals(lt100List, result.get(false));
-    }
+    result.stream().forEach(app -> System.out.println(app.toString()));
+    Assert.assertEquals(result.get(1).getStatus(), 200);
+  }
 
-    @Test
-    public void testMap() {
-        List<ApplicationModel> appList = new ArrayList<>();
-        appList.add(new ApplicationModel("normal", 100, 100));
-        appList.add(new ApplicationModel("delay", 200, 100));
-        appList.add(new ApplicationModel("over", 500, 100));
-        appList.add(new ApplicationModel("prePay", 600, 100));
-        appList.add(new ApplicationModel("normal", 100, 100));
-        appList.add(new ApplicationModel("wait for check", 0, 30));
-        appList.add(new ApplicationModel("deny", 0, 40));
-        appList.add(new ApplicationModel("canceled by system", 0, 1000));
+  /**
+   * lambda 表达式 foreach()，可以遍历list中的元素。
+   */
+  @Test
+  public void testDateTimeCompare() {
+    Date begin = new Date(1456730303000L);
+    Date first = new Date(1459440000000L);
+    Date second = new Date(1462032000000L);
+    Date third = new Date(1464710400000L);
+    Date fourth = new Date(1467302400000L);
+    Date end = new Date(1456731660041L);
 
-        long count = appList.stream()
-                            .filter((app) -> app.getRepaymentStatus() >= 100)
-                            .count();
-        Assert.assertEquals(count, 5);
+    List<Date> dateList = Stream.of(begin, first, second, third, fourth, end).collect(Collectors.toList());
+    SimpleDateFormat formate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-        List<ApplicationModel> result = appList.stream()
-                                               .filter(app -> app.getStatus() >= 100 && app.getStatus() != 1000)
-                                               .map((app) -> {
-                                                   if (app.getRepaymentStatus() >= 100) {
-                                                       app.setStatus(app.getRepaymentStatus());
-                                                   }
-                                                   return app;
-                                               })
-                                               .collect(Collectors.toList());
+    dateList.stream()
+            .map(date -> formate.format(date).toString())
+            .forEach(dateText -> System.out.println(dateText));
 
-        result.stream().forEach(app -> System.out.println(app.toString()));
-        Assert.assertEquals(result.get(1).getStatus(), 200);
-    }
+    Assert.assertTrue(true);
+  }
 }
 
