@@ -18,7 +18,6 @@ public class DirectorTest {
     builder.setAge(20).setName("wxl").setSomethingImportant("wxl is very important");
     Product productWxl = builder.create();
 
-
     System.out.println(productYzs.toString());
     System.out.println(productWxl.toString());
 
