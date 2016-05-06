@@ -32,8 +32,22 @@ public class DoubleComareZeroTest {
     Assert.assertFalse(expectZero);
   }
 
+  /**
+   * 测试double和zero的比较，可以得到0的情况。
+   */
   @Test
-  public void compareDoubleAndZeroWithEpsilon(){
+  public void compareDoubleAndZeroAnthoerWay() {
+    double valA = 0.2;
+    double valB = 0.4;
+    for (int i = 0; i < 2; i++) {
+      valB -= valA;
+    }
+    boolean expectZero = valB == 0.0D;
+    Assert.assertTrue(expectZero);
+  }
+
+  @Test
+  public void compareDoubleAndZeroWithEpsilon() {
 
     double valA = 0.1D;
     double valB = 0.5D;
@@ -42,17 +56,20 @@ public class DoubleComareZeroTest {
       valB -= valA;
     }
     //引入epsilon（误差范围）
-    boolean expectZero = valB == 0.0D;
+    boolean expectZero = doubleApproximateZero(valB);
 
     Assert.assertFalse(expectZero);
   }
 
-  private  boolean doubleGreatThanZero(double val){
+
+  private boolean doubleApproximateZero(double val) {
     //误差范围，自定义
     double epsilon = 0.00000000000001D;
-    if(val-epsilon <= 0){
-
-    }  return false;
+    if (Math.abs(val - 0) < epsilon) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 

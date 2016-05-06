@@ -3,7 +3,7 @@ package main.puzzlers.daily.study;
 /**
  * @author kaidi
  */
-public class Multicast {
+public class MulticastTest {
 
   public static void main(String[] args) {
     /**

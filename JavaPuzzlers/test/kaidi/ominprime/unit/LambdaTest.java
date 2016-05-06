@@ -136,5 +136,20 @@ public class LambdaTest {
 
     Assert.assertTrue(true);
   }
+
+  /**
+   * collector操作，不会返回null
+   * 如果没有匹配的元素，返回一个empty list对象
+   */
+  @Test
+  public void testCollectReturn() {
+    //测试对象为空
+    List<String> testee = new ArrayList<String>();
+
+    //不会匹配到任何元素
+    List<String> outCome = testee.stream().filter(s -> s.startsWith("null"))
+                                 .collect(Collectors.toList());
+    Assert.assertNotNull(outCome);
+  }
 }
 
