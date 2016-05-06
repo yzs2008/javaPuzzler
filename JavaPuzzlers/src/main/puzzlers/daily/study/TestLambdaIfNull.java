@@ -1,4 +1,4 @@
-package puzzlers.expressive;
+package main.puzzlers.daily.study;
 
 import java.util.ArrayList;
 import java.util.List;

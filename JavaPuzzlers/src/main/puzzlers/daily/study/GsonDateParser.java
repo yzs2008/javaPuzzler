@@ -1,4 +1,4 @@
-package puzzlers.expressive;
+package main.puzzlers.daily.study;
 
 import java.text.DateFormat;
 import java.util.Date;

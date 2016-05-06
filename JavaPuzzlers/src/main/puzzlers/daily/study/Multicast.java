@@ -1,4 +1,4 @@
-package main.puzzlers.expressive;
+package main.puzzlers.daily.study;
 
 /**
  * @author kaidi
