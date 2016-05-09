@@ -22,15 +22,17 @@ jar {
 
 dependencies {
     compile(
-        'org.slf4j:slf4j-api:1.7.12',
-        'org.slf4j:slf4j-log4j12:1.7.12',
-        'commons-logging:commons-logging:1.2',
-        'log4j:log4j:1.2.17',
-        'com.google.code.gson:gson:2.4'
+            'org.slf4j:slf4j-api:1.7.12',
+            'org.slf4j:slf4j-log4j12:1.7.12',
+            'commons-logging:commons-logging:1.2',
+            'log4j:log4j:1.2.17',
+            'com.google.code.gson:gson:2.4',
+            'com.alibaba.rocketmq:rocketmq-client:3.2.6',
+            'com.alibaba.rocketmq:rocketmq-common:3.2.6'
     )
 
     compile files(
-        'bin/javaPuzzler.jar'
+            'bin/javaPuzzler.jar'
     )
 
     testCompile 'junit:junit:4.12'
