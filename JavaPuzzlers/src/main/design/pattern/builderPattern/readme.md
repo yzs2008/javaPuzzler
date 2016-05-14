@@ -10,6 +10,8 @@
 建造者模式可以保证按照规范流程创建对象，如果有一个对象需要严格控制其创建流程，首先考虑使用建造者模式。
 在对象没有严格要求创建的条件时，建造者模式和普通的创建，抽象工厂模式都十分相似。
 
+什么时候使用建造者模式呢？`The builder pattern is a good choice when designing classes whose constructors or static factories would have more than a handful of parameters`引自《effective java》构造一个对象有很多构造参数时，就是使用建造者模式的好时机，工厂模式更倾向于少量参数构造对象的情景
+
 建造者模式结构图：
 
 ![建造者模式结构图](http://pic002.cnblogs.com/images/2012/406683/2012071919460471.jpg)
