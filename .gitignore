@@ -2,7 +2,7 @@
 *.iml
 *.idea/*
 build/*
-./.gradle/*
+/.gradle/*
 *.iws
 *.ipr
 
