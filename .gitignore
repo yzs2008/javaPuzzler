@@ -1,4 +1,4 @@
-*/.classpath
-*/.gradle/*
-*/.project
-*/.settings/*
+/bin/
+*.iml
+*.idea/*
+build/*
