@@ -10,8 +10,8 @@ import org.junit.Test;
  * Write the code, Change the world.
  */
 public class ClassLoadTest {
-  @Test
-  public void testClassLoad() {
+    @Test
+    public void testClassLoad() {
 
-  }
+    }
 }
