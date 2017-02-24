@@ -1,7 +1,7 @@
 package kaidi.ominprime.unit;
 
-import main.ominprime.unit.ApplicationModel;
-import main.ominprime.unit.RepaymentStatusModel;
+import com.zzu.kaidi.java.puzzles.pattern.unit.ApplicationModel;
+import com.zzu.kaidi.java.puzzles.pattern.unit.RepaymentStatusModel;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,11 +1,8 @@
 package kaidi.puzzlers.jvm;
 
-import main.puzzlers.jvm.PassiveInvokeChild;
+import com.zzu.kaidi.java.puzzles.pattern.puzzlers.jvm.PassiveInvokeChild;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,6 +1,6 @@
 package kaidi.ominprime.unit;
 
-import main.ominprime.unit.PersonModel;
+import com.zzu.kaidi.java.puzzles.pattern.unit.PersonModel;
 import org.junit.Assert;
 import org.junit.Test;
 

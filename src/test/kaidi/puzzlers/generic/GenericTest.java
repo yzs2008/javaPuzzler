@@ -1,6 +1,6 @@
 package kaidi.puzzlers.generic;
 
-import main.puzzlers.generic.BoxModel;
+import com.zzu.kaidi.java.puzzles.pattern.puzzlers.generic.BoxModel;
 import org.junit.Assert;
 import org.junit.Test;
 
