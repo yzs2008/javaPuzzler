@@ -1,7 +1,7 @@
 package kaidi.puzzlers.jvm;
 
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.jvm.PrivateStaticFieldSynchronize;
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.jvm.PublicStaticFieldSynchronize;
+import com.zzu.kaidi.java.puzzles.puzzlers.jvm.PrivateStaticFieldSynchronize;
+import com.zzu.kaidi.java.puzzles.puzzlers.jvm.PublicStaticFieldSynchronize;
 import org.junit.Assert;
 import org.junit.Test;
 

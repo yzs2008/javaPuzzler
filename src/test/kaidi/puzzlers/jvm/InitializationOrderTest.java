@@ -1,6 +1,6 @@
 package kaidi.puzzlers.jvm;
 
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.jvm.InitializationOrder;
+import com.zzu.kaidi.java.puzzles.puzzlers.jvm.InitializationOrder;
 import org.junit.Assert;
 import org.junit.Test;
 

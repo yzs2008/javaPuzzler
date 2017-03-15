@@ -2,8 +2,8 @@ package kaidi.puzzlers.downCast;
 
 import org.junit.Assert;
 import org.junit.Test;
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.downCast.Base;
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.downCast.Child;
+import com.zzu.kaidi.java.puzzles.puzzlers.downCast.Base;
+import com.zzu.kaidi.java.puzzles.puzzlers.downCast.Child;
 
 /**
  * Created by kaidi on 2016/6/30.

@@ -3,7 +3,7 @@ package kaidi.puzzlers.daily.study;
 
 import org.junit.Assert;
 import org.junit.Test;
-import com.zzu.kaidi.java.puzzles.pattern.puzzlers.downCast.Child;
+import com.zzu.kaidi.java.puzzles.puzzlers.downCast.Child;
 
 import java.util.ArrayList;
 import java.util.List;
