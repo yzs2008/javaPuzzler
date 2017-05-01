@@ -22,7 +22,7 @@ public class NioEchoServer {
         Selector selector = Selector.open();
 
         // 服务端 Socket 监听8080端口, 并配置为非阻塞模式
-        serverSocketChannel.socket().bind(new InetSocketAddress(8080));
+        serverSocketChannel.socket().bind(new InetSocketAddress(8082));
         serverSocketChannel.configureBlocking(false);
 
         // 将 channel 注册到 selector 中.
